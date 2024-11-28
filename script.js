@@ -1,4 +1,4 @@
-const CORRECT_PASSWORD = "1234";
+const CORRECT_PASSWORD = "2508";
 const INACTIVITY_TIMEOUT = 300000; // 5 minutes
 const FILES_DIRECTORY = '/dsa/';
 const SUPPORTED_EXTENSIONS = ['.c', '.cpp', '.BAK'];
