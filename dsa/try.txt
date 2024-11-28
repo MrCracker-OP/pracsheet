@@ -1,0 +1,48 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+#define MAX 100
+
+int adj[MAX][MAX];
+int visited[MAX];
+
+void bfs(int start, int n){
+    int queue[MAX], front = 0, rear = 0;
+    visited[start] = 1;
+    queue[rear++] = start;
+
+    printf("BPS Traversal: ");
+    while (front < rear){
+        int current = queue[front++];
+        printf("%d ",current);
+
+        for(int i=0; i<n;i++){
+            if(adj[current][i]==1&& !visited[i]){
+                visited[i] = 1;
+                queue[rear++]=i;
+            }
+        }
+    }
+    printf("\n");
+}
+
+
+int main() {
+    int n, edges, u, v;
+
+    printf("Enter the number of vertices: ");
+    scanf("%d", &n);
+
+    printf("Enter the number of edges: ");
+    scanf("%d", &edges);
+
+    for (int i = 0; i < edges; i++) {
+        printf("Enter edge (u v): ");
+        scanf("%d %d", &u, &v);
+        adj[u][v] = 1;
+        adj[v][u] = 1; // Assuming undirected graph
+    }
+
+    bfs(0, n); // Start BFS from vertex 0
+    return 0;
+}
