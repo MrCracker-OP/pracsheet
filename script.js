@@ -1,6 +1,6 @@
 const CORRECT_PASSWORD = "1234";
 const INACTIVITY_TIMEOUT = 300000; // 5 minutes
-const FILES_DIRECTORY = './dsa/';
+const FILES_DIRECTORY = '/dsa/';
 const SUPPORTED_EXTENSIONS = ['.c', '.cpp', '.BAK'];
 
 class SessionManager {
@@ -190,7 +190,7 @@ class PageManager {
 window.addEventListener('DOMContentLoaded', () => {
     const pageName = document.body.getAttribute('data-page');
 
-    switch(pageName) {
+    switch (pageName) {
         case 'index':
             PageManager.initLoginPage();
             break;
