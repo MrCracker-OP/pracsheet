@@ -3,6 +3,32 @@ const INACTIVITY_TIMEOUT = 300000; // 5 minutes
 const FILES_DIRECTORY = '/dsa/';
 const SUPPORTED_EXTENSIONS = ['.c', '.cpp', '.BAK'];
 
+// Predefined files to work around Vercel directory listing limitations
+const PREDEFINED_FILES = [
+    'Exp1LinkedList.cpp',
+    'Exp1LList.cpp',
+    'Exp2LLFunctions.cpp',
+    'Exp3Poly.cpp',
+    'Exp4Stack.cpp',
+    'Exp5InfixtoPostfix.cpp',
+    'Exp7Parenthesis.cpp',
+    'Exp8LinearQueue.cpp',
+    'EXP9CI~1.BAK',
+    'EXP9CI~1.C',
+    'Exp11BPS.c',
+    'EXP11DFS.BAK',
+    'EXP11DFS.C',
+    'Exp12Bubble.c',
+    'EXP12B~1.BAK',
+    'EXP12B~1.C',
+    'Exp12Insertion.c',
+    'Exp13BSTtraversal.c',
+    'EXP14BST.BAK',
+    'EXP14BST.C',
+    'test.html',
+    'try.txt',
+];
+
 class SessionManager {
     static setAuthenticated() {
         const token = btoa(Date.now().toString());
@@ -39,32 +65,10 @@ class FileManager {
         if (!this.fileListDiv) return;
 
         try {
-            const response = await fetch(this.filesDirectory, {
-                method: 'GET',
-                headers: {
-                    'Cache-Control': 'no-cache'
-                }
-            });
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            const fileListHtml = await response.text();
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(fileListHtml, 'text/html');
-            const links = doc.querySelectorAll('a');
-
-            if (links.length === 0) {
-                throw new Error("No files found in directory");
-            }
-
+            // Use predefined file list instead of directory fetch
             this.fileListDiv.innerHTML = '';
 
-            links.forEach((link) => {
-                const fileName = link.textContent;
-                const fileExtension = fileName.split('.').pop();
-
+            PREDEFINED_FILES.forEach(fileName => {
                 if (this.supportedExtensions.some(ext => fileName.endsWith(ext))) {
                     this.createFileItem(fileName, `${this.filesDirectory}${fileName}`);
                 }
@@ -78,11 +82,10 @@ class FileManager {
                 `;
             }
         } catch (error) {
-            console.error("Error fetching files:", error);
+            console.error("Error loading files:", error);
             this.fileListDiv.innerHTML = `
                 <div class="error-message">
-                    Unable to load files. Error: ${error.message}.
-                    Please check your server configuration and file permissions.
+                    Unable to load files. Error: ${error.message}
                 </div>
             `;
         }
