@@ -1,33 +1,115 @@
 const CORRECT_PASSWORD = "2508";
 const INACTIVITY_TIMEOUT = 300000; // 5 minutes
-const FILES_DIRECTORY = '/dsa/';
-const SUPPORTED_EXTENSIONS = ['.c', '.cpp', '.BAK'];
 
-// Predefined files to work around Vercel directory listing limitations
-const PREDEFINED_FILES = [
-    'Exp1LinkedList.cpp',
-    'Exp1LList.cpp',
-    'Exp2LLFunctions.cpp',
-    'Exp3Poly.cpp',
-    'Exp4Stack.cpp',
-    'Exp5InfixtoPostfix.cpp',
-    'Exp7Parenthesis.cpp',
-    'Exp8LinearQueue.cpp',
-    'EXP9CI~1.BAK',
-    'EXP9CI~1.C',
-    'Exp11BPS.c',
-    'EXP11DFS.BAK',
-    'EXP11DFS.C',
-    'Exp12Bubble.c',
-    'EXP12B~1.BAK',
-    'EXP12B~1.C',
-    'Exp12Insertion.c',
-    'Exp13BSTtraversal.c',
-    'EXP14BST.BAK',
-    'EXP14BST.C',
-    'test.html',
-    'try.txt',
-];
+// Centralized file configuration
+const FILE_CONFIG = {
+    DSA: {
+        directory: '/dsa/',
+        extensions: ['.c', '.cpp', '.BAK'],
+        files: [
+            'Exp1LinkedList.cpp', 'Exp1LList.cpp', 'Exp2LLFunctions.cpp', 
+            'Exp3Poly.cpp', 'Exp4Stack.cpp', 'Exp5InfixtoPostfix.cpp', 
+            'Exp7Parenthesis.cpp', 'Exp8LinearQueue.cpp', 'EXP9CI~1.BAK',
+            // Add more DSA files as needed
+        ]
+    },
+    PYTHON: {
+        directory: '/Expt_ProblemStatements/',
+        extensions: ['.py'],
+        directories:{
+            "Exp2_6": [
+                "1LeapYearChecker.ipynb",
+                "2Vowel_or_Consonant.ipynb",
+                "3ElectricityBillCalculation.ipynb",
+                "4BMI_Calculator.ipynb",
+                "5Shopping_Discount.ipynb",
+                "6ATM_Transaction.ipynb"
+            ],
+            "Exp3_5": [
+                "Anagram Checker.ipynb",
+                "Character Frequency Analysis.ipynb",
+                "Longest Word Finder.ipynb",
+                "Palindrome.ipynb",
+                "Word Frequency Counter.ipynb"
+            ],
+            "Exp4_5": [
+                "Dictionary Operations.ipynb",
+                "ListOperations.ipynb",
+                "Sorting Tuples.ipynb",
+                "Tuple Manipulation.ipynb",
+                "Tuple-Based Student Records.ipynb"
+            ],
+            "Exp5_9": [
+                "Diagonal_Elements_Sum.ipynb",
+                "Find_Maximum_Element.ipynb",
+                "Flatten_a_2D_Array.ipynb",
+                "Matrix_Addition.ipynb",
+                "Matrix_Multiplication.ipynb",
+                "Reshape_a_1D_Array.ipynb",
+                "Row_and_Column_Averages.ipynb",
+                "Sum_of_Array_Elements.ipynb",
+                "Transpose_of_a_Matrix.ipynb"
+            ],
+            "Exp6_6": [
+                "Fibonacci_Sequence.ipynb",
+                "GCD_By_EuclideanMethod.ipynb",
+                "Palindrome_Checker.ipynb",
+                "Power_of_a_number.ipynb",
+                "String_Reversal.ipynb",
+                "Sum_of_Digits.ipynb"
+            ],
+            "Exp7_5": [
+                "Combining_Lists_Element_wise.ipynb",
+                "Keeping_Odd_Numbers_In_a_List.ipynb",
+                "String_Lengths.ipynb",
+                "Sum_of_Even_Numbers.ipynb",
+                "Title_Case_Conversion.ipynb"
+            ],
+            "Exp8_5": [
+                "Execution Count.ipynb",
+                "Greeting Decorator.ipynb",
+                "Simple Logger.ipynb",
+                "Simple Timer.ipynb",
+                "Uppercase Decorator.ipynb"
+            ],
+            "Exp9_3": [
+                "Bank Account System.ipynb",
+                "Employee Management System.ipynb",
+                "Library Management System.ipynb"
+            ],
+            "Exp10_4": [
+                "Books and Digital Books.ipynb",
+                "Employees and Managers.ipynb",
+                "Shapes and Area Calculation.ipynb",
+                "Vehicles and Fuel Efficiency.ipynb"
+            ],
+            "Exp11_4": [
+                "Division_Calculator.ipynb",
+                "File_Handling_with_Exceptions.ipynb",
+                "Handling_Multiple_Exceptions.ipynb",
+                "User_Input_Validation.ipynb"
+            ],
+            "Exp12_4": [
+                "Backup_System.ipynb",
+                "CSV_Data_Processing.ipynb",
+                "File_Integrity_Check.ipynb",
+                "Log_File_Analysis.ipynb"
+            ],
+            "Exp14_4": [
+                "Data Analysis with Pandas.ipynb",
+                "Data Preprocessing with NumPy and Pandas.ipynb",
+                "MachineLearningPackages.ipynb",
+                "Statistical Analysis with NumPy.ipynb",
+                "Visualization of Data Trends with Matplotlib.ipynb"
+            ],
+            "Exp15_3": [
+                "Cleaning_and_Plotting_Missing_Data.ipynb",
+                "Data_Normalization_and_Visualization.ipynb",
+                "Handling_Outliers_and_Visualization.ipynb"
+            ]
+        }
+    }
+};
 
 class SessionManager {
     static setAuthenticated() {
@@ -55,58 +137,68 @@ class SessionManager {
 }
 
 class FileManager {
-    constructor(directory, supportedExtensions) {
-        this.filesDirectory = directory;
-        this.supportedExtensions = supportedExtensions;
-        this.fileListDiv = document.getElementById('file-list');
+    static initPythonDirectorySelect() {
+        const select = document.getElementById('python-directory-select');
+        const directories = Object.keys(FILE_CONFIG.PYTHON.directories);
+        
+        directories.forEach(dir => {
+            const option = document.createElement('option');
+            option.value = dir;
+            option.textContent = dir.replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+            select.appendChild(option);
+        });
     }
 
-    async fetchFileList() {
-        if (!this.fileListDiv) return;
+    static displayFiles(type, directory = null) {
+        const displayArea = document.getElementById('file-display-area');
+        displayArea.innerHTML = ''; // Clear previous content
 
-        try {
-            // Use predefined file list instead of directory fetch
-            this.fileListDiv.innerHTML = '';
+        let files = [];
+        let baseDirectory = '';
 
-            PREDEFINED_FILES.forEach(fileName => {
-                if (this.supportedExtensions.some(ext => fileName.endsWith(ext))) {
-                    this.createFileItem(fileName, `${this.filesDirectory}${fileName}`);
-                }
-            });
+        if (type === 'DSA') {
+            files = FILE_CONFIG.DSA.files;
+            baseDirectory = FILE_CONFIG.DSA.directory;
+        } else if (type === 'PYTHON' && directory) {
+            files = FILE_CONFIG.PYTHON.directories[directory];
+            baseDirectory = `${FILE_CONFIG.PYTHON.directory}${directory}/`;
+        }
 
-            if (this.fileListDiv.children.length === 0) {
-                this.fileListDiv.innerHTML = `
-                    <div class="error-message">
-                        No supported files found. Supported extensions: ${this.supportedExtensions.join(', ')}
-                    </div>
-                `;
-            }
-        } catch (error) {
-            console.error("Error loading files:", error);
-            this.fileListDiv.innerHTML = `
-                <div class="error-message">
-                    Unable to load files. Error: ${error.message}
+        if (files.length === 0) {
+            displayArea.innerHTML = `
+                <p class="text-center text-red-500">No files found in ${directory || type} directory</p>
+            `;
+            return;
+        }
+
+        const fileListContainer = document.createElement('div');
+        fileListContainer.className = 'grid grid-cols-2 gap-4';
+
+        files.forEach(fileName => {
+            const fileCard = document.createElement('div');
+            fileCard.className = 'bg-white p-4 rounded-lg shadow-md flex justify-between items-center';
+            
+            fileCard.innerHTML = `
+                <span class="text-gray-700">${fileName}</span>
+                <div class="space-x-2">
+                    <button onclick="FileManager.copyFileContent('${baseDirectory}${fileName}')" 
+                            class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 transition">
+                        Copy
+                    </button>
+                    <button onclick="FileManager.downloadFile('${fileName}', '${baseDirectory}${fileName}')" 
+                            class="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600 transition">
+                        Download
+                    </button>
                 </div>
             `;
-        }
+
+            fileListContainer.appendChild(fileCard);
+        });
+
+        displayArea.appendChild(fileListContainer);
     }
 
-    createFileItem(fileName, filePath) {
-        const fileItem = document.createElement('div');
-        fileItem.classList.add('file-item');
-
-        fileItem.innerHTML = `
-            <span>File: ${fileName}</span>
-            <div class="file-actions">
-                <button onclick="fileManager.copyFileContent('${filePath}')">Copy Content</button>
-                <button onclick="fileManager.downloadFile('${fileName}', '${filePath}')">Download</button>
-            </div>
-        `;
-
-        this.fileListDiv.appendChild(fileItem);
-    }
-
-    async copyFileContent(filePath) {
+    static async copyFileContent(filePath) {
         try {
             const response = await fetch(filePath);
             if (!response.ok) throw new Error("Failed to fetch file");
@@ -121,7 +213,7 @@ class FileManager {
         }
     }
 
-    downloadFile(fileName, filePath) {
+    static downloadFile(fileName, filePath) {
         const a = document.createElement('a');
         a.href = filePath;
         a.download = fileName;
@@ -180,12 +272,22 @@ class PageManager {
             }
         });
 
-        resetTimer(); // Initial timer start
+        resetTimer();
     }
 
     static initFileManager() {
-        window.fileManager = new FileManager(FILES_DIRECTORY, SUPPORTED_EXTENSIONS);
-        fileManager.fetchFileList();
+        FileManager.initPythonDirectorySelect();
+    }
+}
+
+// Globally accessible functions for HTML onclick events
+function showDSAFiles() {
+    FileManager.displayFiles('DSA');
+}
+
+function showPythonFiles(directory) {
+    if (directory) {
+        FileManager.displayFiles('PYTHON', directory);
     }
 }
 
