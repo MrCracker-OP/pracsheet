@@ -18,94 +18,94 @@ const FILE_CONFIG = {
         extensions: ['.py'],
         directories:{
             "Exp2_6": [
-                "1LeapYearChecker.ipynb",
-                "2Vowel_or_Consonant.ipynb",
-                "3ElectricityBillCalculation.ipynb",
-                "4BMI_Calculator.ipynb",
-                "5Shopping_Discount.ipynb",
-                "6ATM_Transaction.ipynb"
+                "1LeapYearChecker.py",
+                "2Vowel_or_Consonant.py",
+                "3ElectricityBillCalculation.py",
+                "4BMI_Calculator.py",
+                "5Shopping_Discount.py",
+                "6ATM_Transaction.py"
             ],
             "Exp3_5": [
-                "Anagram Checker.ipynb",
-                "Character Frequency Analysis.ipynb",
-                "Longest Word Finder.ipynb",
-                "Palindrome.ipynb",
-                "Word Frequency Counter.ipynb"
+                "Anagram Checker.py",
+                "Character Frequency Analysis.py",
+                "Longest Word Finder.py",
+                "Palindrome.py",
+                "Word Frequency Counter.py"
             ],
             "Exp4_5": [
-                "Dictionary Operations.ipynb",
-                "ListOperations.ipynb",
-                "Sorting Tuples.ipynb",
-                "Tuple Manipulation.ipynb",
-                "Tuple-Based Student Records.ipynb"
+                "Dictionary Operations.py",
+                "ListOperations.py",
+                "Sorting Tuples.py",
+                "Tuple Manipulation.py",
+                "Tuple-Based Student Records.py"
             ],
             "Exp5_9": [
-                "Diagonal_Elements_Sum.ipynb",
-                "Find_Maximum_Element.ipynb",
-                "Flatten_a_2D_Array.ipynb",
-                "Matrix_Addition.ipynb",
-                "Matrix_Multiplication.ipynb",
-                "Reshape_a_1D_Array.ipynb",
-                "Row_and_Column_Averages.ipynb",
-                "Sum_of_Array_Elements.ipynb",
-                "Transpose_of_a_Matrix.ipynb"
+                "Diagonal_Elements_Sum.py",
+                "Find_Maximum_Element.py",
+                "Flatten_a_2D_Array.py",
+                "Matrix_Addition.py",
+                "Matrix_Multiplication.py",
+                "Reshape_a_1D_Array.py",
+                "Row_and_Column_Averages.py",
+                "Sum_of_Array_Elements.py",
+                "Transpose_of_a_Matrix.py"
             ],
             "Exp6_6": [
-                "Fibonacci_Sequence.ipynb",
-                "GCD_By_EuclideanMethod.ipynb",
-                "Palindrome_Checker.ipynb",
-                "Power_of_a_number.ipynb",
-                "String_Reversal.ipynb",
-                "Sum_of_Digits.ipynb"
+                "Fibonacci_Sequence.py",
+                "GCD_By_EuclideanMethod.py",
+                "Palindrome_Checker.py",
+                "Power_of_a_number.py",
+                "String_Reversal.py",
+                "Sum_of_Digits.py"
             ],
             "Exp7_5": [
-                "Combining_Lists_Element_wise.ipynb",
-                "Keeping_Odd_Numbers_In_a_List.ipynb",
-                "String_Lengths.ipynb",
-                "Sum_of_Even_Numbers.ipynb",
-                "Title_Case_Conversion.ipynb"
+                "Combining_Lists_Element_wise.py",
+                "Keeping_Odd_Numbers_In_a_List.py",
+                "String_Lengths.py",
+                "Sum_of_Even_Numbers.py",
+                "Title_Case_Conversion.py"
             ],
             "Exp8_5": [
-                "Execution Count.ipynb",
-                "Greeting Decorator.ipynb",
-                "Simple Logger.ipynb",
-                "Simple Timer.ipynb",
-                "Uppercase Decorator.ipynb"
+                "Execution Count.py",
+                "Greeting Decorator.py",
+                "Simple Logger.py",
+                "Simple Timer.py",
+                "Uppercase Decorator.py"
             ],
             "Exp9_3": [
-                "Bank Account System.ipynb",
-                "Employee Management System.ipynb",
-                "Library Management System.ipynb"
+                "Bank Account System.py",
+                "Employee Management System.py",
+                "Library Management System.py"
             ],
             "Exp10_4": [
-                "Books and Digital Books.ipynb",
-                "Employees and Managers.ipynb",
-                "Shapes and Area Calculation.ipynb",
-                "Vehicles and Fuel Efficiency.ipynb"
+                "Books and Digital Books.py",
+                "Employees and Managers.py",
+                "Shapes and Area Calculation.py",
+                "Vehicles and Fuel Efficiency.py"
             ],
             "Exp11_4": [
-                "Division_Calculator.ipynb",
-                "File_Handling_with_Exceptions.ipynb",
-                "Handling_Multiple_Exceptions.ipynb",
-                "User_Input_Validation.ipynb"
+                "Division_Calculator.py",
+                "File_Handling_with_Exceptions.py",
+                "Handling_Multiple_Exceptions.py",
+                "User_Input_Validation.py"
             ],
             "Exp12_4": [
-                "Backup_System.ipynb",
-                "CSV_Data_Processing.ipynb",
-                "File_Integrity_Check.ipynb",
-                "Log_File_Analysis.ipynb"
+                "Backup_System.py",
+                "CSV_Data_Processing.py",
+                "File_Integrity_Check.py",
+                "Log_File_Analysis.py"
             ],
             "Exp14_4": [
-                "Data Analysis with Pandas.ipynb",
-                "Data Preprocessing with NumPy and Pandas.ipynb",
-                "MachineLearningPackages.ipynb",
-                "Statistical Analysis with NumPy.ipynb",
-                "Visualization of Data Trends with Matplotlib.ipynb"
+                "Data Analysis with Pandas.py",
+                "Data Preprocessing with NumPy and Pandas.py",
+                "MachineLearningPackages.py",
+                "Statistical Analysis with NumPy.py",
+                "Visualization of Data Trends with Matplotlib.py"
             ],
             "Exp15_3": [
-                "Cleaning_and_Plotting_Missing_Data.ipynb",
-                "Data_Normalization_and_Visualization.ipynb",
-                "Handling_Outliers_and_Visualization.ipynb"
+                "Cleaning_and_Plotting_Missing_Data.py",
+                "Data_Normalization_and_Visualization.py",
+                "Handling_Outliers_and_Visualization.py"
             ]
         }
     }
