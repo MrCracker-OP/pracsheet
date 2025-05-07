@@ -8,7 +8,7 @@ const FILE_CONFIG = {
         extensions: ['.py', '.cpp', '.BAK'],
         files: [
             'EXP 1  BFS DFS.py', 'EXP 2 dls ids .py', 'EXP 3 A_star.py', 
-            'EXP 5 Genetic Algo.py', 'EXP 6 minmax.py',
+            'EXP 5 Genetic Algo.py', 'EXP 6 minmax.py','genetic2.py','genetic random.py'
             // Add more DSA files as needed
         ]
     },
