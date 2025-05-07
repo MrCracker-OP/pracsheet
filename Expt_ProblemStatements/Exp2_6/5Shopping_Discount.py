@@ -1,48 +1,70 @@
-def check_balance(balance):
-    print(f"Your current balance is: ${balance:.2f}")
-
-def deposit_money(balance):
-    amount = float(input("Enter the amount to deposit: $"))
-    if amount > 0:
-        balance += amount
-        print(f"${amount:.2f} has been deposited to your account.")
-    else:
-        print("Invalid deposit amount.")
-    return balance
-
-def withdraw_money(balance):
-    amount = float(input("Enter the amount to withdraw: $"))
-    if 0 < amount <= balance:
-        balance -= amount
-        print(f"${amount:.2f} has been withdrawn from your account.")
-    else:
-        print("Invalid withdrawal amount or insufficient funds.")
-    return balance
-
-def atm_menu():
-    print("\nATM Menu:")
-    print("1. Check Balance")
-    print("2. Deposit Money")
-    print("3. Withdraw Money")
-    print("4. Exit")
-
-# Ask user to enter their initial balance
-balance = float(input("Enter your initial balance: $"))
-
-while True:
-    atm_menu()
-    choice = input("Choose an option (1-4): ")
-
-    if choice == '1':
-        check_balance(balance)
-    elif choice == '2':
-        balance = deposit_money(balance)
-        check_balance(balance)
-    elif choice == '3':
-        balance = withdraw_money(balance)
-        check_balance(balance)
-    elif choice == '4':
-        print("Exiting... Thank you for using the ATM!")
-        break
-    else:
-        print("Invalid option. Please try again.")
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "metadata": {
+    "colab": {
+     "base_uri": "https://localhost:8080/"
+    },
+    "executionInfo": {
+     "elapsed": 9691,
+     "status": "ok",
+     "timestamp": 1722608674977,
+     "user": {
+      "displayName": "Mangal Dandekar",
+      "userId": "12136019235932552125"
+     },
+     "user_tz": -330
+    },
+    "id": "UZp0izGPeeRr",
+    "outputId": "88d4e519-0280-40aa-eb2e-5f9101e255bd"
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Enter the purchase amount: $600\n",
+      "The final price after applying the discount is: $570.00\n"
+     ]
+    }
+   ],
+   "source": [
+    "def calculate_discounted_price(purchase_amount):\n",
+    "    if purchase_amount > 1000:\n",
+    "        discount = 0.10\n",
+    "    elif 500 <= purchase_amount <= 1000:\n",
+    "        discount = 0.05\n",
+    "    else:\n",
+    "        discount = 0.0\n",
+    "    final_price = purchase_amount * (1 - discount)\n",
+    "    return final_price\n",
+    "\n",
+    "# Ask user to input the purchase amount\n",
+    "purchase_amount = float(input(\"Enter the purchase amount: $\"))\n",
+    "\n",
+    "# Calculate the final price after applying the discount\n",
+    "final_price = calculate_discounted_price(purchase_amount)\n",
+    "\n",
+    "# Print the final price\n",
+    "print(f\"The final price after applying the discount is: ${final_price:.2f}\")\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "colab": {
+   "authorship_tag": "ABX9TyOhyP8nFJMRZ9z9DOAn1PzE",
+   "provenance": []
+  },
+  "kernelspec": {
+   "display_name": "Python 3",
+   "name": "python3"
+  },
+  "language_info": {
+   "name": "python"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 0
+}

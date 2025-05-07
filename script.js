@@ -4,12 +4,11 @@ const INACTIVITY_TIMEOUT = 300000; // 5 minutes
 // Centralized file configuration
 const FILE_CONFIG = {
     DSA: {
-        directory: '/dsa/',
-        extensions: ['.c', '.cpp', '.BAK'],
+        directory: '/ai/',
+        extensions: ['.py', '.cpp', '.BAK'],
         files: [
-            'Exp1LinkedList.cpp', 'Exp1LList.cpp', 'Exp2LLFunctions.cpp', 
-            'Exp3Poly.cpp', 'Exp4Stack.cpp', 'Exp5InfixtoPostfix.cpp', 
-            'Exp7Parenthesis.cpp', 'Exp8LinearQueue.cpp', 'EXP9CI~1.BAK',
+            'EXP 1  BFS DFS.py', 'EXP 2 dls ids .py', 'EXP 3 A_star.py', 
+            'EXP 5 Genetic Algo.py', 'EXP 6 minmax.py',
             // Add more DSA files as needed
         ]
     },

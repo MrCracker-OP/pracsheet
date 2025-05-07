@@ -10,10 +10,10 @@ def process_data(data):
         return "Invalid data in list."
 
 List1 = [1,2,3,4,5]
-process_data(List1)
+print(process_data(List1))
 
 List2 = []
-process_data(List2)
+print(process_data(List2))
 
 List1 = [1,2,3,"A",5]
-process_data(List1)
+print(process_data(List1))
