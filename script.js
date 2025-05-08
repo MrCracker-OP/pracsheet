@@ -4,13 +4,15 @@ const INACTIVITY_TIMEOUT = 300000; // 5 minutes
 // Centralized file configuration
 const FILE_CONFIG = {
     DSA: {
-        directory: '/ai/',
-        extensions: ['.py', '.cpp', '.BAK'],
-        files: [
-            'EXP 1  BFS DFS.py', 'EXP 2 dls ids .py', 'EXP 3 A_star.py', 
-            'EXP 5 Genetic Algo.py', 'EXP 6 minmax.py','genetic2.py','genetic random.py'
-            // Add more DSA files as needed
+        directory: '/daa/',
+        extensions: ['.c','.py', '.cpp', '.BAK'],
+        files : [
+            'Activity.c', 'Dijkstra.c', 'knuth-Morris.c', 'LCS.c', 'NaiveApproach.c', 'Prims.c',
+            'Strassen.c', 'Bellman.c', 'Dijkstra.c', 'knuth-Morris.c', 'LCS.c', 'minmaxDivideConq.c',
+            'N-queen.c', 'SelMerQuick.c', 'Activity.c', 'binary.c', 'knapsack.c', 'Kruskal.c',
+            'linear.c', 'min-max.c', 'NaiveApproach.c', 'Prims.c'
         ]
+        
     },
     PYTHON: {
         directory: '/Expt_ProblemStatements/',
